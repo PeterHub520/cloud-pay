@@ -256,6 +256,26 @@ exports.main = async (event, context) => {
   // ...
 }
 
+在这个示例中，我们在 main 函数中获取 openid，然后将其作为参数传递给 someOtherFunction。这样，someOtherFunction 就可以使用 openid 了。
+// otherFunction.js
+const cloud = require('wx-server-sdk')
+cloud.init()
+
+function someOtherFunction(openid) {
+  // 在这里你可以使用 openid
+  // ...
+}
+
+exports.main = async (event, context) => {
+  const wxContext = cloud.getWXContext()
+
+  // 获取上下文参数
+  const openid = wxContext.OPENID
+
+  // 将 openid 传递给其他函数
+  someOtherFunction(openid)
+}
+
 
 ----
 逻辑
