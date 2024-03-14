@@ -238,6 +238,32 @@ exports.main = async (event, context) => {
 
 
 
+在微信云开发中，cloud.getWXContext() 方法可以获取到调用云函数时的微信上下文，包括 OPENID、APPID 等信息。这个方法可以在任何云函数文件中使用，不仅仅是 index.js。
+
+所以，你可以在 otherFunction.js 中像在 index.js 中一样获取 openid。以下是一个示例：
+
+// otherFunction.js
+const cloud = require('wx-server-sdk')
+cloud.init()
+
+exports.main = async (event, context) => {
+  const wxContext = cloud.getWXContext()
+
+  // 获取上下文参数
+  const openid = wxContext.OPENID
+
+  // 使用 openid
+  // ...
+}
+
+
+----
+逻辑
+用户创建活动表，这张表绑定openid。
+获取展示时，根据openid来展示自己创建的数据。
+
+
+
 
 
 
