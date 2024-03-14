@@ -282,6 +282,9 @@ exports.main = async (event, context) => {
 用户创建活动表，这张表绑定openid。
 获取展示时，根据openid来展示自己创建的数据。
 
+---q
+确认 bx_admin中的_id 32为是不是Openid(28位一般)  ？？
+如果不是 32位是用来干嘛的
 
 
 
